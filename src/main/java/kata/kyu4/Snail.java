@@ -4,16 +4,11 @@ import java.util.ArrayList;
 
 public class Snail {
 
-    private Snail() {}
+    private Snail() {
+    }
 
     public static int[] snail(int[][] array) {
-        if (array.length == 0) {
-            return new int[0];
-
-        }
-        if (array.length == 1) {
-            return array[0];
-        }
+        if (array[0].length == 0) return new int[0];
 
         // Initialize boundaries
         int m = array.length;
