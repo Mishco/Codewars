@@ -55,4 +55,13 @@ class TicTacToeCheckerTest {
                 {1, 2, 1}
         }));
     }
+
+    @Test
+    void testRandomBoard2() {
+        assertEquals(-1, TicTacToeChecker.isSolved(new int[][] {
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0}
+        }));
+    }
 }
