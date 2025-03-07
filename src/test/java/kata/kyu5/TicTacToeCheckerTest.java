@@ -38,4 +38,21 @@ class TicTacToeCheckerTest {
                 {2, 1, 2}
         }), "[1, 2, 1]\n[1, 1, 2]\n[2, 1, 2]");
     }
+
+    @Test
+    void testRandomBoard() {
+        assertEquals(-1, TicTacToeChecker.isSolved(new int[][] {
+                {0, 1, 0},
+                {0, 2, 0},
+                {0, 1, 0}
+        }));
+    }
+    @Test
+    void fixedTest() {
+        assertEquals(-1, TicTacToeChecker.isSolved(new int[][] {
+                {2, 0, 2},
+                {2, 1, 1},
+                {1, 2, 1}
+        }));
+    }
 }
