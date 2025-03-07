@@ -7,14 +7,8 @@ public class TicTacToeChecker {
 
     public static int isSolved(int[][] board) {
         // check two diagonals
-        if ((board[0][0] == board[1][1]) && (board[1][1] == board[2][2]) && board[0][0] != 0) {
-            return board[0][0];
-        }
-
-        // check two diagonals
-        if ((board[0][2] == board[1][1]) && (board[1][1] == board[2][0]) && board[0][2] != 0) {
-            return board[0][2];
-        }
+        Integer boardDiagonal = checkDiagonals(board);
+        if (boardDiagonal != null) return boardDiagonal;
 
         int totalSumRow = 0;
         int totalSumCol = 0;
@@ -52,5 +46,17 @@ public class TicTacToeChecker {
         }
 
         return 0;
+    }
+
+    /// Check two diagonals
+    private static Integer checkDiagonals(int[][] board) {
+        if ((board[0][0] == board[1][1]) && (board[1][1] == board[2][2]) && board[0][0] != 0) {
+            return board[0][0];
+        }
+
+        if ((board[0][2] == board[1][1]) && (board[1][1] == board[2][0]) && board[0][2] != 0) {
+            return board[0][2];
+        }
+        return null;
     }
 }
