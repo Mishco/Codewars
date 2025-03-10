@@ -2,6 +2,9 @@ package kata.kyu4;
 
 public class TimeFormatter {
 
+    private TimeFormatter() {
+    }
+
     public static String formatDuration(int seconds) {
         if (seconds <= 0) {
             return "now";
@@ -16,12 +19,13 @@ public class TimeFormatter {
                 int remainder = seconds / units[i];
                 seconds = seconds % units[i];
 
-                result.append(new StringBuilder().append(result.isEmpty() ? "" : (seconds == 0) ? " and " : ", ").append(remainder).append(" ").append(words[i]).append(remainder > 1 ? "s" : ""));
+                if (result.isEmpty())
+                    result.append(remainder).append(" ").append(words[i]).append(remainder > 1 ? "s" : "");
+                else
+                    result.append((seconds == 0) ? " and " : ", ").append(remainder).append(" ").append(words[i]).append(remainder > 1 ? "s" : "");
             }
         }
-        // System.out.println(result);
         return result.toString();
-
     }
 
 
