@@ -12,6 +12,5 @@ public class NumberTrailingZerosTest {
         assertThat(NumberTrailingZeros.zeros(0), is(0));
         assertThat(NumberTrailingZeros.zeros(6), is(1));
         assertThat(NumberTrailingZeros.zeros(14), is(2));
-
     }
 }
