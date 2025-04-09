@@ -39,6 +39,18 @@ public class FibonacciTest {
         testFib(5, 5);
     }
 
+    @Test
+    public void testFib6() {
+        testFib(-8, -6);
+    }
+
+    @Test
+    public void testFib7() {
+        BigInteger fib = Fibonacci.fib(BigInteger.valueOf(-96));
+        assertEquals(new BigInteger("-51680708854858323072"), fib);
+    }
+
+
     private static void testFib(long expected, long input) {
         BigInteger found;
         try {

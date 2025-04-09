@@ -3,25 +3,36 @@ package kata.kyu3;
 import java.math.BigInteger;
 
 public class Fibonacci {
+    private Fibonacci() {
+    }
     public static BigInteger fib(BigInteger n) {
-        // check if n is 0 or 1
-        if (n.intValue() <= 1)
-            return n;
+        if (n.equals(BigInteger.ZERO)) return BigInteger.ZERO;
 
+        if (n.equals(BigInteger.ONE)) return BigInteger.ONE;
+
+        if (n.compareTo(BigInteger.ZERO) < 0) {
+            BigInteger positiveN = n.negate();
+            BigInteger result = fib(positiveN);
+            // Applying the identity for negative Fibonacci indices
+            return (positiveN.mod(BigInteger.TWO).equals(BigInteger.ZERO)) ? result.negate() : result;
+        }
+
+
+        // Base matrices for matrix exponentiation
         BigInteger[][] result = {{BigInteger.ONE, BigInteger.ZERO}, {BigInteger.ZERO, BigInteger.ONE}};
         BigInteger[][] fibMatrix = {{BigInteger.ONE, BigInteger.ONE}, {BigInteger.ONE, BigInteger.ZERO}};
-        // use matrix exponentiation to calculate Fibonacci
-        powerMatrix(fibMatrix, n.intValue() - 1, result);
+
+        powerMatrix(fibMatrix, n.subtract(BigInteger.ONE), result);
 
         return result[0][0];
     }
-    private static void powerMatrix(BigInteger[][] matrix, int exp, BigInteger[][] result) {
-        while (exp > 0) {
-            if (exp % 2 == 1) {
+    private static void powerMatrix(BigInteger[][] matrix, BigInteger exp, BigInteger[][] result) {
+        while (exp.compareTo(BigInteger.ZERO) > 0) {
+            if (exp.mod(BigInteger.TWO).equals(BigInteger.ONE)) {
                 multiplyMatrix(result, matrix);
             }
             multiplyMatrix(matrix, matrix);
-            exp = exp / 2;
+            exp = exp.divide(BigInteger.TWO);
         }
     }
     private static void multiplyMatrix(BigInteger[][] a, BigInteger[][] b) {
